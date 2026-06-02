@@ -49,4 +49,7 @@ po/*~
 rsconnect/
 
 # data folder
-data/
+data/*
+!data/.gitkeep
+
+.Rproj.user
