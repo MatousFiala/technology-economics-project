@@ -18,8 +18,8 @@ summary(data_stations)
 
 stations_to_keep <- data_stations$station_name
 
-data_rides_started <- read.csv("./data/daily_rides_started.csv")
-data_rides_ended <- read.csv("./data/daily_rides_ended.csv")
+data_rides_started <- read.csv("../data/daily_rides_started.csv")
+data_rides_ended <- read.csv("../data/daily_rides_ended.csv")
 
 head(data_rides_started)
 summary(data_rides_started)
@@ -42,6 +42,10 @@ data_rides <- data_rides_started |>
     ), 
     suffix = c("_started", "_ended")
     ) |>
+  mutate(
+    rides_started = ifelse(is.na(rides_started), 0, rides_started),
+    rides_ended   = ifelse(is.na(rides_ended), 0, rides_ended)
+  ) |>
   rename(
     "station_id" = "start_station_id",
     "station_name" = "start_station_name"
@@ -114,94 +118,253 @@ summary(data_weekly)
 
 ##### regressions
 
-### DiD
+### daily
+### did twfe
 
-did_static_simple <- feols(
-  rides_ended ~ did_interaction | station_id,
-  data = data_daily,
-  cluster = ~station_id
-)
-summary(did_static_simple)
-
-did_static <- feols(
-  rides_ended ~ did_interaction | station_id + date,
+did_static_end_log <- feols(
+  log(rides_ended) ~ did_interaction | station_id + date,
   data = data_daily,
   cluster = ~station_id
   )
-summary(did_static)
+summary(did_static_end_log)
 
-did_static_controls <- feols(
-  rides_ended ~ did_interaction + is_workday | station_id,
+did_static_start_log <- feols(
+  log(rides_started) ~ did_interaction | station_id + date,
   data = data_daily,
   cluster = ~station_id
 )
-summary(did_static_controls)
+summary(did_static_start_log)
+
+did_static_end <- feols(
+  rides_ended ~ did_interaction | station_id + date,
+  data = data_daily,
+  cluster = ~station_id
+)
+summary(did_static_end)
+
+did_static_start <- feols(
+  rides_started ~ did_interaction | station_id + date,
+  data = data_daily,
+  cluster = ~station_id
+)
+summary(did_static_start)
+
+did_static_net <- feols(
+  rides_net ~ did_interaction | station_id + date,
+  data = data_daily,
+  cluster = ~station_id
+)
+summary(did_static_net)
+
+etable(
+  did_static_start_log, did_static_end_log, did_static_net,
+  tex = TRUE,                              
+  file = "outputs/tables/did_static_daily.tex", 
+  replace = TRUE,
+  #style.tex = style.tex("aer"),
+  headers = list(
+    "Dependent Variable:" = c(
+      "Rides Started (Log)",
+      "Rides Ended (Log)",
+      "Net Inflows (Levels)"
+    )
+  ),
+  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+  extralines = list(
+    "_-Station Fixed Effects" = c("Yes", "Yes", "Yes"),
+    "_-Date Fixed Effects"    = c("Yes", "Yes", "Yes")
+  ),
+  title = "Daily Difference-in-Differences Estimates: Congestion Pricing Impact",
+  label = "tab:did_static_daily",
+  fitstat = c("n", "r2", "ar2")
+)
+
+#extended table - sensitivity
+
+etable(
+  did_static_start_log, did_static_end_log, did_static_start, did_static_end, did_static_net,
+  tex = TRUE,                              
+  file = "outputs/tables/did_static_daily_ext.tex", 
+  replace = TRUE,
+  #style.tex = style.tex("aer"),
+  headers = list(
+    "Dependent Variable:" = c(
+      "Rides Started (Log)",
+      "Rides Ended (Log)",
+      "Rides Started (Levels)", 
+      "Rides Ended (Levels)", 
+      "Net Inflows (Levels)"
+    )
+  ),
+  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+  extralines = list(
+    "_-Station Fixed Effects" = c("Yes", "Yes", "Yes", "Yes", "Yes"),
+    "_-Date Fixed Effects"    = c("Yes",  "Yes", "Yes", "Yes", "Yes")
+  ),
+  title = "Daily Difference-in-Differences Estimates: Congestion Pricing Impact",
+  label = "tab:did_static_daily",
+  fitstat = c("n", "r2", "ar2")
+)
+
 
 #weekly
 
-did_static_simple_w <- feols(
-  asinh(weekly_rides_net) ~ did_interaction | station_id,
+did_static_w_start_log <- feols(
+  log(weekly_rides_started) ~ did_interaction | station_id + week_start,
   data = data_weekly,
   cluster = ~station_id
 )
-summary(did_static_simple_w)
+summary(did_static_w_start_log)
 
-did_static_w <- feols(
-  asinh(weekly_rides_net) ~ did_interaction | station_id + week_start,
+did_static_w_end_log <- feols(
+  log(weekly_rides_ended) ~ did_interaction | station_id + week_start,
   data = data_weekly,
   cluster = ~station_id
 )
-summary(did_static_w)
+summary(did_static_w_end_log)
+
+did_static_w_end <- feols(
+  weekly_rides_ended ~ did_interaction | station_id + week_start,
+  data = data_weekly,
+  cluster = ~station_id
+)
+summary(did_static_w_end)
+
+did_static_w_start <- feols(
+  weekly_rides_started ~ did_interaction | station_id + week_start,
+  data = data_weekly,
+  cluster = ~station_id
+)
+summary(did_static_w_start)
+
+
+did_static_w_net <- feols(
+  weekly_rides_net ~ did_interaction | station_id + week_start,
+  data = data_weekly,
+  cluster = ~station_id
+)
+summary(did_static_w_net)
+
+
+#extended table weekly - sensitivity
+
+etable(
+  did_static_w_start_log, did_static_w_end_log, did_static_w_start, did_static_w_end, did_static_w_net,
+  tex = TRUE,                              
+  file = "outputs/tables/did_static_weekly_ext.tex", 
+  replace = TRUE,
+  #style.tex = style.tex("aer"),
+  headers = list(
+    "Dependent Variable:" = c(
+      "Rides Started (Log)",
+      "Rides Ended (Log)",
+      "Rides Started (Levels)", 
+      "Rides Ended (Levels)", 
+      "Net Inflows (Levels)"
+    )
+  ),
+  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+  extralines = list(
+    "_-Station Fixed Effects" = c("Yes", "Yes", "Yes", "Yes", "Yes"),
+    "_-Date Fixed Effects"    = c("Yes",  "Yes", "Yes", "Yes", "Yes")
+  ),
+  title = "Weekly Difference-in-Differences Estimates: Congestion Pricing Impact",
+  label = "tab:did_static_daily",
+  fitstat = c("n", "r2", "ar2")
+)
+
 
 #event study
 
-event_study_model <- feols(
-  asinh(weekly_rides_net) ~ i(weeks_to_toll, toll_area, ref =  -1) | station_id + week_start,
+event_study_weekly_net <- feols(
+  weekly_rides_net ~ i(weeks_to_toll, toll_area, ref =  -1) | station_id + week_start,
   data = data_weekly,
   cluster = ~station_id
 )
-iplot(event_study_model)
+iplot(event_study_weekly_net)
 
 
 #monthly
 
-event_study_seasonal <- feols(
-  asinh(weekly_rides_net) ~ i(months_to_toll, toll_area, ref = -1) | station_month_i + week_start,
+# event_study_seasonal <- feols(
+#   asinh(weekly_rides_net) ~ i(months_to_toll, toll_area, ref = -1) | station_month_i + week_start,
+#   data = data_weekly,
+#   cluster = ~station_id
+# )
+# 
+# summary(event_study_seasonal)
+# iplot(event_study_seasonal)
+
+
+event_study_monthly_net <- feols(
+  weekly_rides_net ~ i(months_to_toll, toll_area, ref = -1) | station_id + month_num,
   data = data_weekly,
   cluster = ~station_id
 )
-
-summary(event_study_seasonal)
-iplot(event_study_seasonal)
+iplot(event_study_monthly_net)
 
 
-event_study_monthly<- feols(
-  asinh(weekly_rides_net) ~ i(months_to_toll, toll_area, ref = -1) | station_id + month_num,
-  data = data_weekly,
-  cluster = ~station_id
-)
-
-summary(event_study_monthly)
-iplot(event_study_monthly)
-
-
-did_static_m <- feols(
-  asinh(weekly_rides_net) ~ did_interaction | station_month_i + week_start,
-  data = data_weekly,
-  cluster = ~station_id
-)
-summary(did_static_m)
-
-did_static_m2 <- feols(
-  asinh(weekly_rides_net) ~ did_interaction | station_id + month_num,
-  data = data_weekly,
-  cluster = ~station_id
-)
-summary(did_static_m2)
+# did_static_m <- feols(
+#   asinh(weekly_rides_net) ~ did_interaction | station_month_i + week_start,
+#   data = data_weekly,
+#   cluster = ~station_id
+# )
+# summary(did_static_m)
+# 
+# did_static_m2 <- feols(
+#   asinh(weekly_rides_net) ~ did_interaction | station_id + month_num,
+#   data = data_weekly,
+#   cluster = ~station_id
+# )
+# summary(did_static_m2)
 
 
+### outputs
 
+if (!dir.exists("outputs")) dir.exists("outputs")
+if (!dir.exists("outputs/figures")) dir.create("outputs/figures", recursive = TRUE)
+if (!dir.exists("outputs/tables")) dir.create("outputs/tables", recursive = TRUE)
 
+# plot
+pdf("outputs/figures/event_study_monthly.pdf", width = 8, height = 5)
+
+iplot(event_study_monthly_net,
+      main = "Effect of Congestion Toll on Net Bike Inflows",
+      xlab = "Months Relative to Toll Activation (Jan 2025)",
+      ylab = "Coefficient Estimate",
+      col = "darkblue", 
+      pt.join = TRUE)
+abline(h = 0, col = "red", lty = 2)
+
+dev.off()
+
+pdf("outputs/figures/event_study_weekly.pdf", width = 8, height = 5)
+
+iplot(event_study_weekly_net,
+      main = "Effect of Congestion Toll on Net Bike Inflows",
+      xlab = "Weeks Relative to Toll Activation (Jan 2025)",
+      ylab = "Coefficient Estimate",
+      col = "darkblue", 
+      pt.join = TRUE)
+abline(h = 0, col = "red", lty = 2)
+
+dev.off()
+
+# # export static models to table file
+# etable(
+#   XXXX
+#   tex = TRUE,                              
+#   file = "outputs/tables/did_static_results.tex", 
+#   replace = TRUE,                          
+#   dict = c(did_interaction = "Toll Area $\\times$ Post",
+#            weekly_rides_net = "Net Weekly Rides (asinh)"), 
+#   title = "Difference-in-Differences Estimates: Congestion Pricing Impact",
+#   label = "tab:did_static",
+#   fitstat = c("n", "r2", "adjr2") 
+# )
+#  
+
+# need to select some models as the prefered ones
 
 
 
