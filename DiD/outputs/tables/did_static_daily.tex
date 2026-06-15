@@ -4,24 +4,21 @@
    \centering
    \begin{tabular}{lccc}
       \tabularnewline \midrule \midrule
-      Dependent Variables:     & log(rides\_started)  & log(rides\_ended)  & rides\_net\\   
-      Dependent Variable:      & Rides Started (Log)  & Rides Ended (Log)  & Net Inflows (Levels) \\   
-      Model:                   & (1)                  & (2)                & (3)\\  
+      Dependent Variable:      & Rides Started (Log) & Rides Ended (Log) & Net Inflows (Levels) \\   
+      Model:                   & (1)                 & (2)               & (3)\\  
       \midrule
       \emph{Variables}\\
-      Toll Area $\times$ Post  & 0.0588$^{***}$       & 0.0528$^{***}$     & -0.0907\\   
-                               & (0.0099)             & (0.0111)           & (0.3500)\\   
+      Toll Area $\times$ Post  & 0.0588$^{***}$      & 0.0528$^{***}$    & -0.0907\\   
+                               & (0.0099)            & (0.0111)          & (0.3500)\\   
       \midrule
       \emph{Fixed-effects}\\
-      station\_id              & Yes                  & Yes                & Yes\\  
-      date                     & Yes                  & Yes                & Yes\\  
+      station\_id              & Yes                 & Yes               & Yes\\  
+      date                     & Yes                 & Yes               & Yes\\  
       \midrule
       \emph{Fit statistics}\\
-      Observations             & 450,646              & 450,646            & 450,646\\  
-      R$^2$                    & 0.82231              & 0.87170            & 0.24011\\  
-      Adjusted R$^2$           & 0.82175              & 0.87129            & 0.23770\\  
-      -Station Fixed Effects   & Yes                  & Yes                & Yes\\  
-      -Date Fixed Effects      & Yes                  & Yes                & Yes\\  
+      Observations             & 450,646             & 450,646           & 450,646\\  
+      R$^2$                    & 0.82231             & 0.87170           & 0.24011\\  
+      Adjusted R$^2$           & 0.82175             & 0.87129           & 0.23770\\  
       \midrule \midrule
       \multicolumn{4}{l}{\emph{Clustered (station\_id) standard-errors in parentheses}}\\
       \multicolumn{4}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
