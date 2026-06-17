@@ -118,11 +118,16 @@ summary(data_weekly)
 ### visualization
 
 data_trends_plot <- data_weekly |>
+  mutate(
+    log_weekly_rides_ended = log1p(weekly_rides_ended),
+    log_weekly_rides_started = log1p(weekly_rides_started),
+    log_weekly_rides_net = log1p(weekly_rides_net)
+    ) |>
   group_by(week_start, toll_area) |>
   summarize(
-    avg_inflows = mean(weekly_rides_ended),
-    avg_outflows = mean(weekly_rides_started),
-    avg_net = mean(weekly_rides_net),
+    avg_log_inflows = mean(log_weekly_rides_ended),
+    avg_log_outflows = mean(log_weekly_rides_started),
+    avg_log_net = mean(log_weekly_rides_net),
     .groups = "drop"
   ) |>
   mutate(
@@ -132,7 +137,7 @@ data_trends_plot <- data_weekly |>
 
 png("outputs/figures/parallel_trends_raw.png", width = 9, height = 5.5, units = "in", res = 300)
 
-ggplot(data_trends_plot, aes(x = week_start, y = log1p(avg_inflows), group = group_label, color = group_label)) +
+ggplot(data_trends_plot, aes(x = week_start, y = avg_log_inflows, group = group_label, color = group_label)) +
   geom_point(size = 1.5, alpha = 0.4) +
   geom_smooth(
     aes(group = interaction(group_label, period)), 
@@ -144,7 +149,7 @@ ggplot(data_trends_plot, aes(x = week_start, y = log1p(avg_inflows), group = gro
   labs(
     title = "Raw Weekly Bike Inflows: Treated vs. Control Stations",
     x = "Timeline (Weekly Aggregation)",
-    y = "Log of Average Weekly Rides Ended",
+    y = "Average Log Weekly Rides Ended",
     color = "Station Group"
   ) +
   theme(legend.position = "bottom")
@@ -187,7 +192,7 @@ ggplot(data_adjusted_trends, aes(x = week_start, y = avg_adjusted_rides, color =
   labs(
     title = "Seasonally Adjusted Parallel Trends (Residuals)",
     x = "Timeline (Weekly Aggregation)",
-    y = "Log of Average Residual Weekly Rides",
+    y = "Average Residuals (Log Points Deviations)",
     color = "Station Group"
   ) +
   theme(legend.position = "bottom")
@@ -410,7 +415,7 @@ iplot(event_study_monthly_ended)
 
 ### outputs
 
-if (!dir.exists("outputs")) dir.exists("outputs")
+if (!dir.exists("outputs")) dir.create("outputs")
 if (!dir.exists("outputs/figures")) dir.create("outputs/figures", recursive = TRUE)
 if (!dir.exists("outputs/tables")) dir.create("outputs/tables", recursive = TRUE)
 
