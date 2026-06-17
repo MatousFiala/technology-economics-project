@@ -45,26 +45,65 @@ Given the nature of the policy and nature of the data, we employ two quasi-exper
 
 \section{Data}
 
+\subsection{Difference in Differences}
+
+Before the DiD estimation, it is beneficial to view the raw data and observe possible trends. We do this using two approaches: Figure \ref{fig:trends_raw} presents the raw data fitted using flexible function, Figure \ref{fig:trends_adj} presents seasonally adjusted data. While the former suffers from extreme seasonality, which makes the potential evaluation of parallel trends hard, the latter shows only the variation the data that is left after adjusting for individual stations and both weekly and monthly characteristics (we do this adjustment by first regressing the weekly rides ended on station-month and week fixed effects; second, we obtain the residuals and use them as the adjusted values). 
+
+The raw figure shows not distinction between the group dynamics before and after the effect, we can observe that indeed the stations inside and outside the toll zone are different even before the toll, but we do not see any substantial change after its introduction. The second figure, using the adjusted resisuals show some trends. First, it suggest that parallel trend assumption is satisfied, as the fitted lines are nearly parallel. Second, there is noticeable change in level of the fitted line after the toll introduction - while the treated zone increases ant once, the control groups does exactly the opposite, suggesting, there was a switch of where rides ended, consistent with intuitive expectations of the effect. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/parallel_trends_raw.png}
+    \caption{Enter Caption}
+    \label{fig:trends_raw}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/parallel_trends_adjusted.png}
+    \caption{Enter Caption}
+    \label{fig:trends_adj}
+\end{figure}
+
 \section{Methodology}
 
 \section{Results}
 
-\section{Difference in Differences}
+\subsection{Difference in Differences}
+
+We begin by presenting the vent study plots of both rides ended and net rides (...) While the net rides show not effect, there is an effect observed for rides ended. But this can be observed on both sides of the figure, suggesting a seasonality is playing a role rather that causal effect of toll introduction. Note that these event studies are estimated already using the fixed effects as in the final DiD estimation. 
+
+These visualizations suggest the underlying data might be problematic for DiD estimation, as there is effect detected even before the treatment is applied, this substantially limits the reliability of our results and analysis. 
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{DiD/outputs/figures/event_study_monthly.png}
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_monthly.png}
     \caption{Enter Caption}
     \label{fig:placeholder}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{DiD/outputs/figures/event_study_weekly.png}
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_monthly_ended.png}
     \caption{Enter Caption}
     \label{fig:placeholder}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_weekly.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_weekly_ended.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+The results of preferred models, as show in Figures (...) show a statistically significant effects for some specifications - namely Rides started and ended in logs, for levels, it does not show significant effect. 
 
 \input{DiD/outputs/tables/did_static_daily}
 \input{DiD/outputs/tables/did_static_daily_ext}
