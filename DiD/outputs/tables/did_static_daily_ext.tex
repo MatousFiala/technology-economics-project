@@ -4,24 +4,21 @@
    \centering
    \begin{tabular}{lccccc}
       \tabularnewline \midrule \midrule
-      Dependent Variables:     & log(rides\_started)  & log(rides\_ended)  & rides\_started         & rides\_ended         & rides\_net\\   
-      Dependent Variable:      & Rides Started (Log)  & Rides Ended (Log)  & Rides Started (Levels) & Rides Ended (Levels) & Net Inflows (Levels) \\   
-      Model:                   & (1)                  & (2)                & (3)                    & (4)                  & (5)\\  
+      Dependent Variable:      & Rides Started (Log) & Rides Ended (Log) & Rides Started (Levels) & Rides Ended (Levels) & Net Inflows (Levels) \\   
+      Model:                   & (1)                 & (2)               & (3)                    & (4)                  & (5)\\  
       \midrule
       \emph{Variables}\\
-      Toll Area $\times$ Post  & 0.0588$^{***}$       & 0.0528$^{***}$     & 0.8916                 & 0.8009               & -0.0907\\   
-                               & (0.0099)             & (0.0111)           & (1.012)                & (1.053)              & (0.3500)\\   
+      Toll Area $\times$ Post  & 0.0295              & 0.0495$^{***}$    & 0.4473                 & 0.8869               & 0.4397\\   
+                               & (0.0191)            & (0.0154)          & (0.9941)               & (1.047)              & (0.5052)\\   
       \midrule
       \emph{Fixed-effects}\\
-      station\_id              & Yes                  & Yes                & Yes                    & Yes                  & Yes\\  
-      date                     & Yes                  & Yes                & Yes                    & Yes                  & Yes\\  
+      station\_id              & Yes                 & Yes               & Yes                    & Yes                  & Yes\\  
+      date                     & Yes                 & Yes               & Yes                    & Yes                  & Yes\\  
       \midrule
       \emph{Fit statistics}\\
-      Observations             & 450,646              & 450,646            & 450,646                & 450,646              & 450,646\\  
-      R$^2$                    & 0.82231              & 0.87170            & 0.78827                & 0.79655              & 0.24011\\  
-      Adjusted R$^2$           & 0.82175              & 0.87129            & 0.78760                & 0.79590              & 0.23770\\  
-      -Station Fixed Effects   & Yes                  & Yes                & Yes                    & Yes                  & Yes\\  
-      -Date Fixed Effects      & Yes                  & Yes                & Yes                    & Yes                  & Yes\\  
+      Observations             & 465,276             & 465,276           & 465,276                & 465,276              & 465,276\\  
+      R$^2$                    & 0.83102             & 0.81556           & 0.78785                & 0.78918              & 0.21864\\  
+      Adjusted R$^2$           & 0.83050             & 0.81499           & 0.78720                & 0.78853              & 0.21624\\  
       \midrule \midrule
       \multicolumn{6}{l}{\emph{Clustered (station\_id) standard-errors in parentheses}}\\
       \multicolumn{6}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
