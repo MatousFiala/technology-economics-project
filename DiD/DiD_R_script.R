@@ -374,7 +374,7 @@ iplot(event_study_weekly_ended)
 
 
 event_study_monthly_net <- feols(
-  weekly_rides_net ~ i(months_to_toll, toll_area, ref = -1) | station_id + month_num,
+  weekly_rides_net ~ i(months_to_toll, toll_area, ref = -1) | station_id + week_start,
   data = data_weekly,
   cluster = ~station_id
 )
@@ -382,7 +382,7 @@ iplot(event_study_monthly_net)
 
 
 event_study_monthly_ended <- feols(
-  log1p(weekly_rides_ended) ~ i(months_to_toll, toll_area, ref = -1) | station_id + month_num,
+  log1p(weekly_rides_ended) ~ i(months_to_toll, toll_area, ref = -1) | station_id + week_start,
   data = data_weekly,
   cluster = ~station_id
 )
