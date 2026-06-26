@@ -1,0 +1,147 @@
+```{r}
+    source("~/R/scripts/utils.R")
+    library("sf")
+    library("nycgeo")
+
+    data_sample <- read_csv("../data/202412-citibike-tripdata_1.csv") %>% slice_sample(n=100000)
+```
+
+```{r}
+
+    data_clean <- data_sample %>%
+        mutate(hour = cut(hour(started_at), c(0,6,9,12,15,18,21,24), include.lowest = T),
+               across(c(start_lat, start_lng, end_lat, end_lng), \(x) round(2*x, 2)/4))  %>%
+        summarise(.by = c(start_lat, start_lng, hour), n = n())
+
+
+    data_clean %>%
+    ggplot(aes(x = start_lng, y = start_lat, colour = log(n))) +
+        geom_point(size = 2) +
+        coord_equal() +
+        theme_cp_map() +
+        facet_wrap(~hour)
+
+    points <- data_sample %>%
+        slice_sample(n = 10000) %>%
+        filter(!is.na(start_lng), !is.na(start_lat))  %>%
+        st_as_sf(coords = c("start_lng", "start_lat"), crs = 4326) %>%
+        nyc_point_poly("borough")
+
+    points %>%
+        filter(borough_name == "Manhattan") %>%
+        mutate(geometry = st_jitter(geometry)) %>%
+        ggplot() +
+        geom_sf(data = nyc_boundaries(geography = "borough", filter_by = "borough", region = "manhattan")) +
+        geom_sf(alpha = 0.5) +
+        theme_cp_map()
+
+    ntas <- nyc_boundaries("nta") %>%
+        inner_join(tibble(group = c(rep("treat", 3), rep("control", 3)), nta_id = c("MN15", "MN17", "MN19", "MN14", "MN40", "MN31")))  %>%
+        st_transform(4326)
+
+    boundaries <- st_bbox(ntas)
+    boundaries
+
+    points_data <- data_sample %>%
+        #filter(!is.na(start_lng), !is.na(start_lat)) %>%
+        filter(between(start_lng, boundaries$xmin, boundaries$xmax),
+               between(start_lat, boundaries$ymin, boundaries$ymax)
+        ) %>%
+        st_as_sf(coords = c("start_lng", "start_lat"), crs = 4326) %>%
+        st_join(ntas, join = st_intersects) %>%
+        filter(!is.na(group)) %>%
+        ggplot() + geom_sf()
+
+    points_data
+
+
+
+
+
+    
+
+```
+
+
+
+
+```{r}
+    data <- read_csv("simple_did.csv")
+
+    data %>%
+        ggplot(aes(x = days_after_toll, y = `count(1)`, colour = toll_area)) +
+        geom_vline(xintercept = 0, linetype = "dashed") +
+        geom_point() +
+        geom_line() +
+        geom_smooth(method = "lm", aes(group = interaction(toll_area, days_after_toll>=0))) +
+        facet_wrap(~type) +
+        theme_mf()
+
+
+    lm(`count(1)` ~toll_area*I(days_after_toll>=0), data = filter(data, abs(days_after_toll) <= 7)) %>%
+        summary()
+
+```
+
+```{r}
+    sample <- read_csv("sample.csv")
+
+    sample %>%
+        ggplot(aes(x = lat, y = lng, colour = distance_from_toll_line)) +
+        geom_jitter(size = 10) +
+
+    sample %>%
+        ggplot(aes(x = lat, y = lng, colour = toll_area)) +
+        geom_jitter(size = 10)
+
+```
+
+```{r}
+    sample
+```
+
+```{r}
+    end_stations <- read_csv("../data/end_stations.csv")
+
+    end_stations_yoy <- end_stations %>%
+        filter(between(lng, -74.00228, -73.95), between(lat, 40.75, 40.78792)) %>%
+        arrange(end_station_name, month_day, year) %>%
+        mutate(.by = c(end_station_name, month_day), yoy_percent = rides / lag(rides), yo2y_percent = rides / lag(rides, 2)) %>%
+        filter(!is.na(yoy_percent)) %>%
+        mutate(days_from_5th = as.integer(str_extract(month_day, "^(\\d\\d?).", group = 1)) - 5)
+
+    end_stations_yoy %>%
+        filter(between(lng, -74.00228, -73.95), between(lat, 40.75, 40.78792)) %>%
+        ggplot(aes(x = lng, y = lat, colour = toll_area)) +
+        geom_point()
+
+    end_stations_yoy %>%
+        filter(year == 2025, between(days_from_5th, -2, 5))  %>%
+        filter(between(lng, -74.00228, -73.95), between(lat, 40.75, 40.78792)) %>%
+        ggplot(aes(x = lng, y = lat, colour = log(yoy_percent))) +
+        geom_point(alpha = 0.9, size = 5) +
+        scale_colour_gradient2(low = "darkred", mid = "white", high = "darkgreen", midpoint = 0) +
+        theme_cp_map() +
+        coord_equal() +
+        facet_wrap(~days_from_5th)
+
+    library("fixest")
+
+    end_stations  %>%
+        filter(between(lng, -74.00228, -73.95), between(lat, 40.75, 40.78792)) %>%
+        filter(distance_from_toll_line <= 0.005) %>%
+        mutate(toll_time = date >= as_date('2025-01-05'),
+                event_time = pmin(pmax(date - as_date('2025-01-05'), -4), 10)) %>%
+        feols(log(rides) ~ toll_area*factor(event_time) | end_station_name + month_day + day_of_week + day_of_week:toll_area, 
+              data = .
+              ) %>%
+        summary()
+
+
+
+
+```
+
+
+
+
