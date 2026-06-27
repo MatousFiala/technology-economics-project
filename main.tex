@@ -37,13 +37,17 @@
 
 Large cities all over the world suffer from heavy traffic, recently many of them decided to do something about that using different precautions. Urbanists are trying to came up with ideal solution applicable to every city, which is rather complicated task. The measures to keep the traffic bearable are different; somewhere, subsidizing public transport or shared mobility might work, maybe in combination with making these transport means more reliable and preferable over cars. When this is not enough, more restrictive measures must be used. Recently, many cities implemented congestions tolls in the city centres to financially motivate drivers to switch to other transport means while not banning the entry absolutely. This "kinda" tax can be considered as a external mechanism that accounts for the externality of heavy traffic which would be otherwise not financially "visible". 
 
-IN the context of the situation described above and given that the case is highly topical around big cities, we aim to focus on one specific outcome of this policy - the intermodal switch, specifically to shared bikes. Leveraging the unique dataset of New York CitiBike provided, we outline a clear research question: After implementation of the congestion toll in New York, did the commuters switch to shared bikes?
+In the context of the situation described above and given that the case is highly topical around big cities, we aim to focus on one specific outcome of this policy - the intermodal switch, specifically to shared bikes. Leveraging the unique dataset of New York CitiBike provided, we outline a clear research question: After implementation of the congestion toll in New York, did the commuters switch to shared bikes?
 
-Given the nature of the policy and nature of the data, we employ two quasi-experimental (?) research designs: Regression Discontinuity and Difference in Differences. We selected them to match the situation: the toll was implemented strictly on one day and was effective since and the toll area is strictly separated - this allows us to use both the time and spatial boundary in our methodological approach. 
+Given the nature of the policy and nature of the data, we employ two quasi-experimental research designs: Regression Discontinuity and Difference in Differences. We selected them to match the situation: the toll was implemented strictly on one day and was effective since and the toll area is strictly separated - this allows us to use both the time and spatial boundary in our methodological approach. 
 
 \section{Literature}
 
-\section{Data}
+\section{Background and Data}
+
+New York's \emph{congestion pricing} was a long-debated policy of instituting a toll on driving into the very centre of the town: Downtown Manhattan. After years of stalling, the toll went into effect on 5.1.2025 costing \$9 in peak and \$2.25 in off-peak times. The priced area consists of all of Manhattan below 60th street (around the start of Central Park). This specific boundary was chosen to cover the Queensboro bridge terminating at 59th street (this suggests that there should be continuity of covariates in proximity of the boundary which bodes better for RDD than e.g. a NTA region-based boundary). Overall, the policy was seen as successful with car traffic decreasing by 11\%, faster cas and bus commutes and a reduction of noise complaints and serious injuries from car crashes \cite{NYT2026}.
+
+One less explored facet of the toll is the effect on shared bikes. In New York, the most popular provider is CitiBike, a subsidiary of Lyft, with millions of rides per month. The provider publishes data about all rides as Open data \cite{CitiBike2026}, including start and stop station id's and coordinates, start and stop times, type (manual or e-bike) and membership status of user. Numbers of rides started and ended between January 2024 and January 2026 was aggregated by station and day, then connected with NTA region and Borrough data from New York's geodata using the \emph{nytgeo} package. For each station in Manhattan, its distance from the toll line was computed as the length of the tangent line to a line denoting 60th street ($-73.958664, 40.759062 \to -73.993499, 40.773593$) multiplied by which side of the line the point was on ($>0 = toll$). This was computed using the \emph{spatial} extension of DuckDB. 
 
 \subsection{Difference in Differences}
 
@@ -54,18 +58,38 @@ The raw figure shows not distinction between the group dynamics before and after
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/parallel_trends_raw.png}
-    \caption{Enter Caption}
+    \caption{Average log weekly rides ended at treated (inside toll zone) and control (outside zone) stations, January 2024 -- early 2026. GAM smooths are fitted separately for the pre- and post-toll periods (dashed line = January 5, 2025). A strong seasonal pattern dominates both groups; no immediate visual shift is apparent at the toll introduction.}
     \label{fig:trends_raw}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/parallel_trends_adjusted.png}
-    \caption{Enter Caption}
+    \caption{Seasonally adjusted parallel trends. Plotted values are residuals from a regression of log weekly rides ended on station$\times$month and week fixed effects. Pre-toll trends are nearly parallel, supporting the parallel trends assumption. A modest upward shift for the treated group is visible immediately after the toll introduction.}
     \label{fig:trends_adj}
 \end{figure}
 
 \section{Methodology}
+
+\subsection{Difference in Differences}
+
+\subsection{Regression Discontinuity}
+
+The congestion zone boundary is a sharp geographic line that was chosen from reasons that shouldn't suggest the continuity assumption of RDD was violated (to include a popular entryway, the Queensboro bridge, into the toll zone). This allows us to isolate the causal effect: a station 100 metres inside and a station 100 metres outside the toll zone should be similar in terms of neighbourhood character, commuting patters et cetera. The only thing that ought to differ is which side of the line they fall on. If the toll changed behaviour, we should observe a discontinuous jump in outcomes right at the boundary..
+
+The running variable is $X_i$: the signed distance of each station from the toll boundary line. We define the sign so that $X_i > 0$ is inside the toll zone (lower Manhattan and Midtown south of 60th Street) and $X_i < 0$ outside. The cutoff is simply $c = 0$.
+
+To account for any effects of the holiday seasons (i.e. people returning to downtown offices after post-new years holidays regardless of toll), we used a log difference of the station's ridership compared to the same date a year prior:
+
+\begin{equation}
+    \Delta Y_i = \log(\text{rides}_{i,\text{Jan 2025}}) - \log(\text{rides}_{i,\text{Jan 2024}})
+\end{equation}
+
+\noindent computed over a symmetric $\pm 5$-day window centred on the toll introduction date. Under the assumption that January-to-January changes would have been smooth across the boundary absent the policy, any discontinuity in $\Delta Y_i$ at $c = 0$ can be attributed to the toll.
+
+We estimate the RD effect using local linear regression with a triangular kernel, as implemented in the \texttt{rdrobust} package (Calonico, Cattaneo, and Titiunik 2014). The bandwidth is chosen by MSE-optimal selection, which balances bias and variance. Inference is based on robust bias-corrected confidence intervals. We separately estimate the discontinuity for rides ended at each station (inflows) and rides started (outflows). The analysis is restricted to Manhattan, since the toll boundary is drawn within that borough and the distance concept loses meaning across the East or Hudson Rivers.
+
+One practical complication deserves mention. Because station locations follow the Manhattan grid, many stations share identical distance values (all stations of 59th street will have an identical euclidian distance from 60th street). \texttt{rdrobust} flags this as mass points in the running variable. We do not expect this to bias the point estimate, but it does inflate uncertainty relative to a completely continuous running variable.
 
 \section{Results}
 
@@ -78,29 +102,29 @@ These visualizations suggest the underlying data might be problematic for DiD es
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_monthly.png}
-    \caption{Enter Caption}
-    \label{fig:placeholder}
+    \caption{Event study: net bike inflows (rides ended minus rides started, levels), monthly time units. Coefficients are interactions of the toll-zone indicator with month relative to toll introduction (reference = month $-1$). Estimates are consistently negative both before and after, with wide confidence intervals and no discernible break at month 0.}
+    \label{fig:es_monthly_net}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_monthly_ended.png}
-    \caption{Enter Caption}
-    \label{fig:placeholder}
+    \caption{Event study: log weekly rides ended, monthly time units. Pre-treatment coefficients are systematically negative, suggesting a pre-existing downward trend for treated stations relative to control --- a potential violation of the parallel trends assumption. A small positive spike appears at months 0--1 following the toll introduction.}
+    \label{fig:es_monthly_ended}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_weekly.png}
-    \caption{Enter Caption}
-    \label{fig:placeholder}
+    \caption{Event study: net bike inflows (levels), weekly time units. At this resolution the estimates are very noisy; no systematic pre- or post-treatment pattern is discernible.}
+    \label{fig:es_weekly_net}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{DiD/outputs/figures/event_study_weekly_ended.png}
-    \caption{Enter Caption}
-    \label{fig:placeholder}
+    \caption{Event study: log weekly rides ended, weekly time units. Noisy week-by-week estimates; broadly consistent with the monthly picture in Figure~\ref{fig:es_monthly_ended}, with some positive coefficients post-treatment alongside considerable pre-trend variation.}
+    \label{fig:es_weekly_ended}
 \end{figure}
 
 The results of preferred models, as show in Figures (...) show a statistically significant effects for some specifications - namely Rides started and ended in logs, for levels, it does not show significant effect. 
@@ -108,6 +132,32 @@ The results of preferred models, as show in Figures (...) show a statistically s
 \input{DiD/outputs/tables/did_static_daily}
 \input{DiD/outputs/tables/did_static_daily_ext}
 \input{DiD/outputs/tables/did_static_weekly_ext}
+
+\subsection{Regression Discontinuity}
+
+Figures \ref{fig:rdd_ended} and \ref{fig:rdd_started} show the RD plots for rides ended and rides started, respectively. Each panel plots binned means of the year-over-year log change against signed distance from the toll boundary, together with local linear fits estimated separately on each side of the cutoff. The dashed vertical line marks the boundary at $X_i = 0$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{code/outputs/figures/rdd_rides_ended.png}
+    \caption{RD Plot: Log Year-over-Year Change in Rides Ended. Binned means and local linear fits (triangular kernel, MSE-optimal bandwidth) on either side of the toll boundary. Positive signed distance = inside the congestion zone.}
+    \label{fig:rdd_ended}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{code/outputs/figures/rdd_rides_started.png}
+    \caption{RD Plot: Log Year-over-Year Change in Rides Started. Same specification as Figure \ref{fig:rdd_ended}.}
+    \label{fig:rdd_started}
+\end{figure}
+
+Neither plot shows a visible jump at the boundary. The fitted lines pass through the cutoff without an obvious discontinuity, and the binned means on either side of zero sit at roughly the same level. This is confirmed by the estimates in Table \ref{tab:rdd_main}. The RD effect for rides ended is 0.023 log points (robust SE = 0.081, $p = 0.760$), and for rides started it is 0.048 log points (robust SE = 0.083, $p = 0.546$). Both confidence intervals are wide and contain zero.
+
+\input{code/outputs/tables/rdd_main}
+
+The null result contrasts with the DiD, which found a significant positive effect on log rides ended. These designs answer different questions. The DiD uses all treated and control stations and identifies an average effect over time; the RDD is local, recovering the treatment effect only for stations near the boundary. If the toll's impact is concentrated farther inside the zone --- where commuters have no walkable alternative to biking --- stations near the boundary would show little response and the RDD estimate would miss the action entirely.
+
+A further limitation is the presence of mass points in the running variable. Manhattan's grid means that all stations along the same street segment lie at essentially the same perpendicular distance from the toll line, collapsing what should be a continuous running variable into a handful of distinct values. This reduces effective variation and widens standard errors, so the RDD may lack power here rather than identifying a true zero.
 
 \section{Discussion}
 

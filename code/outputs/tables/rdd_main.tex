@@ -1,0 +1,29 @@
+
+\begin{table}[htbp]
+   \caption{\label{tab:rdd_main} Regression Discontinuity Estimates: Congestion Toll Effect}
+   \centering
+   \begin{tabular}{lcc}
+      \tabularnewline \midrule \midrule
+                                    & Rides Ended         & Rides Started \\
+      Dependent Variable:           & (Log YoY Change)    & (Log YoY Change) \\
+      Model:                        & (1)                 & (2)\\
+      \midrule
+      \emph{Variables}\\
+      RD Effect               &  $0.023$           &  $0.048$ \\
+                              &  (0.081)             &  (0.083)    \\
+      95\% CI               &  $[-0.133,\ 0.183]$  &  $[-0.112,\ 0.212]$ \\
+      \midrule
+      \emph{Bandwidth \& Sample}\\
+      MSE-Optimal Bandwidth (m) &  2268  &  2385 \\
+      Effective Observations    &  273  &  285 \\
+      \midrule
+      \emph{Specification}\\
+      Kernel                          & Triangular  & Triangular \\
+      Polynomial Order                & 1           & 1 \\
+      Inference                       & Robust      & Robust \\
+      \midrule \midrule
+      \multicolumn{3}{l}{\emph{Robust bias-corrected standard errors in parentheses.}}\\
+      \multicolumn{3}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+   \end{tabular}
+\end{table}
+
