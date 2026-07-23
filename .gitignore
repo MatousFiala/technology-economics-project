@@ -52,4 +52,3 @@ rsconnect/
 data/*
 !data/.gitkeep
 
-.Rproj.user
