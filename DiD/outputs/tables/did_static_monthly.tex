@@ -1,0 +1,28 @@
+
+\begin{table}[htbp]
+   \caption{\label{tab:did_static_weekly} Weekly Difference-in-Differences Estimates: Congestion Pricing Impact}
+   \centering
+   \begin{tabular}{lccc}
+      \tabularnewline \midrule \midrule
+      Dependent Variable:      & Rides Started (Log) & Rides Ended (Log) & Net Inflows (Levels) \\   
+      Model:                   & (1)                 & (2)               & (3)\\  
+      \midrule
+      \emph{Variables}\\
+      Toll Area $\times$ Post  & 0.0182              & 0.0563$^{***}$    & 4.399\\   
+                               & (0.0238)            & (0.0202)          & (3.765)\\   
+      \midrule
+      \emph{Fixed-effects}\\
+      station\_month\_i        & Yes                 & Yes               & Yes\\  
+      week\_start              & Yes                 & Yes               & Yes\\  
+      \midrule
+      \emph{Fit statistics}\\
+      Observations             & 59,470              & 59,470            & 59,470\\  
+      R$^2$                    & 0.95099             & 0.87948           & 0.60165\\  
+      Adjusted R$^2$           & 0.94360             & 0.86130           & 0.54155\\  
+      \midrule \midrule
+      \multicolumn{4}{l}{\emph{Clustered (station\_id) standard-errors in parentheses}}\\
+      \multicolumn{4}{l}{\emph{Signif. Codes: ***: 0.01, **: 0.05, *: 0.1}}\\
+   \end{tabular}
+\end{table}
+
+

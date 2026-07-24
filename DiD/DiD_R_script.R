@@ -135,7 +135,7 @@ data_trends_plot <- data_weekly |>
     period = ifelse(week_start >= as.Date("2025-01-05"), "Post-Toll", "Pre-Toll")
   )
 
-png("outputs/figures/parallel_trends_raw.png", width = 9, height = 5.5, units = "in", res = 300)
+png("outputs/figures/parallel_trends_raw.png", width = 8, height = 5, units = "in", res = 400)
 
 ggplot(data_trends_plot, aes(x = week_start, y = avg_log_inflows, group = group_label, color = group_label)) +
   geom_point(size = 1.5, alpha = 0.4) +
@@ -147,7 +147,7 @@ ggplot(data_trends_plot, aes(x = week_start, y = avg_log_inflows, group = group_
   geom_vline(xintercept = as.Date("2025-01-05"), linetype = "dashed", linewidth = 1, alpha = 0.8) +
   theme_minimal() +
   labs(
-    title = "Raw Weekly Bike Inflows: Treated vs. Control Stations",
+    title = "",
     x = "Timeline (Weekly Aggregation)",
     y = "Average Log Weekly Rides Ended",
     color = "Station Group"
@@ -177,7 +177,7 @@ data_adjusted_trends <- data_weekly |>
   )
 
 
-png("outputs/figures/parallel_trends_adjusted.png", width = 9, height = 5.5, units = "in", res = 300)
+png("outputs/figures/parallel_trends_adjusted.png", width = 8, height = 5, units = "in", res = 400)
 
 ggplot(data_adjusted_trends, aes(x = week_start, y = avg_adjusted_rides, color = group_label)) +
   geom_point(alpha = 0.4, size = 1.5) +
@@ -190,7 +190,7 @@ ggplot(data_adjusted_trends, aes(x = week_start, y = avg_adjusted_rides, color =
   geom_vline(xintercept = as.Date("2025-01-05"), linetype = "dashed", linewidth = 1, alpha = 0.8) +
   theme_minimal() +
   labs(
-    title = "Seasonally Adjusted Parallel Trends (Residuals)",
+    title = "",
     x = "Timeline (Weekly Aggregation)",
     y = "Average Residuals (Log Points Deviations)",
     color = "Station Group"
@@ -257,28 +257,28 @@ etable(
   fitstat = c("n", "r2", "ar2")
 )
 
-#extended table - sensitivity
-
-etable(
-  did_static_start_log, did_static_end_log, did_static_start, did_static_end, did_static_net,
-  tex = TRUE,                              
-  file = "outputs/tables/did_static_daily_ext.tex", 
-  replace = TRUE,
-  depvar = FALSE,
-  headers = list(
-    "Dependent Variable:" = c(
-      "Rides Started (Log)",
-      "Rides Ended (Log)",
-      "Rides Started (Levels)", 
-      "Rides Ended (Levels)", 
-      "Net Inflows (Levels)"
-    )
-  ),
-  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
-  title = "Daily Difference-in-Differences Estimates: Congestion Pricing Impact",
-  label = "tab:did_static_daily",
-  fitstat = c("n", "r2", "ar2")
-)
+# #extended table - sensitivity
+# 
+# etable(
+#   did_static_start_log, did_static_end_log, did_static_start, did_static_end, did_static_net,
+#   tex = TRUE,                              
+#   file = "outputs/tables/did_static_daily_ext.tex", 
+#   replace = TRUE,
+#   depvar = FALSE,
+#   headers = list(
+#     "Dependent Variable:" = c(
+#       "Rides Started (Log)",
+#       "Rides Ended (Log)",
+#       "Rides Started (Levels)", 
+#       "Rides Ended (Levels)", 
+#       "Net Inflows (Levels)"
+#     )
+#   ),
+#   dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+#   title = "Daily Difference-in-Differences Estimates: Congestion Pricing Impact",
+#   label = "tab:did_static_daily",
+#   fitstat = c("n", "r2", "ar2")
+# )
 
 
 #weekly
@@ -319,29 +319,49 @@ did_static_w_net <- feols(
 )
 summary(did_static_w_net)
 
-
-#extended table weekly - sensitivity
+#table weekly
 
 etable(
-  did_static_w_start_log, did_static_w_end_log, did_static_w_start, did_static_w_end, did_static_w_net,
-  tex = TRUE,                              
-  file = "outputs/tables/did_static_weekly_ext.tex", 
+  did_static_w_start_log, did_static_w_end_log, did_static_w_net,
+  tex = TRUE,
+  file = "outputs/tables/did_static_weekly.tex",
   replace = TRUE,
-  depvar = FALSE, 
+  depvar = FALSE,
   headers = list(
     "Dependent Variable:" = c(
       "Rides Started (Log)",
       "Rides Ended (Log)",
-      "Rides Started (Levels)", 
-      "Rides Ended (Levels)", 
       "Net Inflows (Levels)"
     )
   ),
-  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+  dict = c(did_interaction = "Toll Area $\\times$ Post"),
   title = "Weekly Difference-in-Differences Estimates: Congestion Pricing Impact",
-  label = "tab:did_static_daily",
+  label = "tab:did_static_weekly",
   fitstat = c("n", "r2", "ar2")
 )
+
+# #extended table weekly - sensitivity
+# 
+# etable(
+#   did_static_w_start_log, did_static_w_end_log, did_static_w_start, did_static_w_end, did_static_w_net,
+#   tex = TRUE,                              
+#   file = "outputs/tables/did_static_weekly_ext.tex", 
+#   replace = TRUE,
+#   depvar = FALSE, 
+#   headers = list(
+#     "Dependent Variable:" = c(
+#       "Rides Started (Log)",
+#       "Rides Ended (Log)",
+#       "Rides Started (Levels)", 
+#       "Rides Ended (Levels)", 
+#       "Net Inflows (Levels)"
+#     )
+#   ),
+#   dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+#   title = "Weekly Difference-in-Differences Estimates: Congestion Pricing Impact",
+#   label = "tab:did_static_weekly_ext",
+#   fitstat = c("n", "r2", "ar2")
+# )
 
 
 #event study
@@ -388,29 +408,116 @@ event_study_monthly_ended <- feols(
 )
 iplot(event_study_monthly_ended)
 
+event_study_monthly_started <- feols(
+  log1p(weekly_rides_started) ~ i(months_to_toll, toll_area, ref = -1) | station_id + week_start,
+  data = data_weekly,
+  cluster = ~station_id
+)
+iplot(event_study_monthly_started)
 
 
 ### higher dimensionality
 
-# did_static_m <- feols(
-#    log(weekly_rides_started) ~ did_interaction | station_month_i + week_start,
-#    data = data_weekly,
-#    cluster = ~station_id
-#  )
-# summary(did_static_m)
-# 
-#  did_static_m <- feols(
-#    weekly_rides_net ~ did_interaction | station_month_i + week_start,
-#    data = data_weekly,
-#    cluster = ~station_id
-#  )
-# summary(did_static_m)
+did_static_m_start_log <- feols(
+   log1p(weekly_rides_started) ~ did_interaction | station_month_i + week_start,
+   data = data_weekly,
+   cluster = ~station_id
+ )
+summary(did_static_m_start_log)
+
+did_static_m_end_log <- feols(
+  log1p(weekly_rides_ended) ~ did_interaction | station_month_i + week_start,
+  data = data_weekly,
+  cluster = ~station_id
+)
+summary(did_static_m_end_log)
+
+did_static_m_net <- feols(
+   weekly_rides_net ~ did_interaction | station_month_i + week_start,
+   data = data_weekly,
+   cluster = ~station_id
+ )
+summary(did_static_m_net)
 
 # --- should be solved by did desing itself, but might include this as robustness check
 
+# table monthly
 
+etable(
+  did_static_m_start_log, did_static_m_end_log, did_static_m_net,
+  tex = TRUE,
+  file = "outputs/tables/did_static_monthly.tex",
+  replace = TRUE,
+  depvar = FALSE,
+  headers = list(
+    "Dependent Variable:" = c(
+      "Rides Started (Log)",
+      "Rides Ended (Log)",
+      "Net Inflows (Levels)"
+    )
+  ),
+  dict = c(did_interaction = "Toll Area $\\times$ Post"),
+  title = "Weekly Difference-in-Differences Estimates: Congestion Pricing Impact",
+  label = "tab:did_static_weekly",
+  fitstat = c("n", "r2", "ar2")
+)
 
+# ==============================================================================
+# Master Robustness Table: Daily, Weekly, and High-Dimensional Specifications
+# ==============================================================================
 
+etable(
+  # --- 1-3: Daily Models ---
+  did_static_start_log, 
+  did_static_end_log, 
+  did_static_net,
+  
+  # --- 4-6: Weekly Baseline Models (Station FE) ---
+  did_static_w_start_log, 
+  did_static_w_end_log, 
+  did_static_w_net,
+  
+  # --- 7-9: Weekly Station-Month Models (Station-Month FE) ---
+  did_static_m_start_log, 
+  did_static_m_end_log, 
+  did_static_m_net,
+  
+  tex = TRUE,                      
+  file = "outputs/tables/did_static_master_all.tex", 
+  replace = TRUE,
+  depvar = FALSE, 
+  
+  # --- Hierarchical Column Headers ---
+  headers = list(
+    "Temporal Aggregation:" = list(
+      "Daily Data" = 3, 
+      "Weekly (Baseline FE)" = 3, 
+      "Weekly (Station-Month FE)" = 3
+    ),
+    "Outcome:" = c(
+      "Log Started", "Log Ended", "Net Inflows",
+      "Log Started", "Log Ended", "Net Inflows",
+      "Log Started", "Log Ended", "Net Inflows"
+    )
+  ),
+  
+  # --- Variable Names ---
+  dict = c(did_interaction = "Toll Area $\\times$ Post"), 
+  
+  title = "Comprehensive Difference-in-Differences Robustness Matrix across Time Aggregations and Fixed Effects",
+  label = "tab:did_master_matrix",
+  
+  # --- Goodness-of-Fit Stats ---
+  fitstat = c("n", "r2", "ar2"),
+  
+  notes = "Notes: Log outcomes are transformed using log(1 + Y). Net inflows represent gross rides ended minus gross rides started in raw level counts. Columns (1)–(3) use daily station observations. Columns (4)–(6) aggregate data to the station-week level with station and week fixed effects. Columns (7)–(9) incorporate station-by-month fixed effects to absorb localized seasonal trends.",
+  
+  # --- Automatically Wrap in LaTeX Landscape Mode ---
+  postprocess.tex = function(x) {
+    full_tex <- paste(x, collapse = "\n")
+    paste0("\\begin{landscape}\n", full_tex, "\n\\end{landscape}")
+  }
+)
 
 
 ### outputs
@@ -420,9 +527,10 @@ if (!dir.exists("outputs/figures")) dir.create("outputs/figures", recursive = TR
 if (!dir.exists("outputs/tables")) dir.create("outputs/tables", recursive = TRUE)
 
 # plot
-png("outputs/figures/event_study_monthly.png", width = 8, height = 5, units = "in", res = 300)
+png("outputs/figures/event_study_monthly.png", width = 8, height = 5, units = "in", res = 400)
+par(mar = `[<-`(par("mar"), 3, value = 0.7))
 iplot(event_study_monthly_net,
-      main = "Effect of Congestion Toll on Net Bike Inflows",
+      main = "",
       xlab = "Months Relative to Toll Activation (Jan 2025)",
       ylab = "Coefficient Estimate",
       col = "darkblue", 
@@ -430,9 +538,10 @@ iplot(event_study_monthly_net,
 abline(h = 0, col = "red", lty = 2)
 dev.off()
 
-png("outputs/figures/event_study_monthly_ended.png", width = 8, height = 5, units = "in", res = 300)
+png("outputs/figures/event_study_monthly_ended.png", width = 8, height = 5, units = "in", res = 400)
+par(mar = `[<-`(par("mar"), 3, value = 0.7))
 iplot(event_study_monthly_ended,
-      main = "Effect of Congestion Toll on Bike Inflows",
+      main = "",
       xlab = "Months Relative to Toll Activation (Jan 2025)",
       ylab = "Coefficient Estimate",
       col = "darkblue", 
@@ -440,9 +549,10 @@ iplot(event_study_monthly_ended,
 abline(h = 0, col = "red", lty = 2)
 dev.off()
 
-png("outputs/figures/event_study_weekly.png", width = 8, height = 5, units = "in", res = 300)
+png("outputs/figures/event_study_weekly.png", width = 8, height = 5, units = "in", res = 400)
+par(mar = `[<-`(par("mar"), 3, value = 0.7))
 iplot(event_study_weekly_net,
-      main = "Effect of Congestion Toll on Net Bike Inflows",
+      main = "",
       xlab = "Weeks Relative to Toll Activation (Jan 2025)",
       ylab = "Coefficient Estimate",
       col = "darkblue", 
@@ -450,9 +560,10 @@ iplot(event_study_weekly_net,
 abline(h = 0, col = "red", lty = 2)
 dev.off()
 
-png("outputs/figures/event_study_weekly_ended.png", width = 8, height = 5, units = "in", res = 300)
+png("outputs/figures/event_study_weekly_ended.png", width = 8, height = 5, units = "in", res = 400)
+par(mar = `[<-`(par("mar"), 3, value = 0.7))
 iplot(event_study_weekly_ended,
-      main = "Effect of Congestion Toll on Net Bike Inflows",
+      main = "",
       xlab = "Weeks Relative to Toll Activation (Jan 2025)",
       ylab = "Coefficient Estimate",
       col = "darkblue", 
