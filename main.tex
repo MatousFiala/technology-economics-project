@@ -167,8 +167,13 @@ The null result contrasts with the DiD, which found a significant positive effec
 
 A further limitation is the presence of mass points in the running variable. Manhattan's grid means that all stations along the same street segment lie at essentially the same perpendicular distance from the toll line, collapsing what should be a continuous running variable into a handful of distinct values. This reduces effective variation and widens standard errors, so the RDD may lack power here rather than identifying a true zero.
 
-\section{Discussion}
+\section{Conclusion}
 
+In this project, we analyzed the impact of the implementation of the congestion toll in January 2025 on bike-sharing demand in Manhattan, where the priced zone covers streets up to 60th Street. We used a rich, publicly available dataset from CitiBike, specifically using data from January 2024 to January 2026. We estimated the impact of the congestion toll using two causal inference methods: Difference-in-Differences (DiD) and Regression Discontinuity Design (RDD). In both cases, we used the number of rides (both started and ended) at the station level as the dependent variable. In the regression discontinuity, we used the distance from the boundary of the congestion pricing area as the running variable. We deployed appropriate fixed effects and used various functional forms as robustness checks.
+
+The Difference-in-Differences estimates do not indicate a clear impact, mostly yielding insignificant estimates, although some specifications yield positive estimates for rides ended in logs. However, the event study detects an effect even before the intervention, which substantially limits the reliability of the analysis. The RDD approach did not find a significant causal effect. The RDD approach might be limited by the presence of mass points in the running variable that appear due to the nature of the data, where all points in the same street segment have the same distance from the toll boundary, which can reduce the statistical power of the RDD.
+
+The results suggest that the introduction of tolls is likely not the primary factor that influences bike-sharing demand. To the best of our knowledge, our study is the first to use the RDD approach to estimate the impact of congestion tolls on bike-sharing usage. Due to regional differences, we believe that the external validity of the project is limited. On the other hand, the approach can be used in other cities. Lastly, this project might strongly benefit from an interdisciplinary approach—involving geographic scientists—to improve the methodology as well as the interpretation.
 
 
 
