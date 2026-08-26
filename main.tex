@@ -35,7 +35,7 @@
 
 \section{Introduction}
 
-Large cities all over the world suffer from heavy traffic, recently many of them decided to do something about that using different precautions. Urbanists are trying to came up with ideal solution applicable to every city, which is rather complicated task. The measures to keep the traffic bearable are different; somewhere, subsidizing public transport or shared mobility might work, maybe in combination with making these transport means more reliable and preferable over cars. When this is not enough, more restrictive measures must be used. Recently, many cities implemented congestions tolls in the city centres to financially motivate drivers to switch to other transport means while not banning the entry absolutely. This "kinda" tax can be considered as a external mechanism that accounts for the externality of heavy traffic which would be otherwise not financially "visible". 
+Large cities all over the world suffer from heavy traffic, recently many of them decided to do something about that using different precautions. Urbanists are trying to come up with ideal solution applicable to every city, which is rather complicated task. The measures to keep the traffic bearable are different; somewhere, subsidizing public transport or shared mobility might work, maybe in combination with making these transport means more reliable and preferable over cars. When this is not enough, more restrictive measures must be used. Recently, many cities implemented congestions tolls in the city centres to financially motivate drivers to switch to other transport means while not banning the entry absolutely. This "kinda" tax can be considered as a external mechanism that accounts for the externality of heavy traffic which would be otherwise not financially "visible". 
 
 In the context of the situation described above and given that the case is highly topical around big cities, we aim to focus on one specific outcome of this policy - the intermodal switch, specifically to shared bikes. Leveraging the unique dataset of New York CitiBike provided, we outline a clear research question: After implementation of the congestion toll in New York, did the commuters switch to shared bikes?
 
@@ -54,15 +54,15 @@ One of the most relevant empirical studies is \cite{CORNAGO2023102821}. They stu
 
 \section{Background and Data}
 
-New York's \emph{congestion pricing} was a long-debated policy of instituting a toll on driving into the very centre of the town: Downtown Manhattan. After years of stalling, the toll went into effect on 5.1.2025 costing \$9 in peak and \$2.25 in off-peak times. The priced area consists of all of Manhattan below 60th street (around the start of Central Park). This specific boundary was chosen to cover the Queensboro bridge terminating at 59th street (this suggests that there should be continuity of covariates in proximity of the boundary which bodes better for RDD than e.g. a NTA region-based boundary). Overall, the policy was seen as successful with car traffic decreasing by 11\%, faster cas and bus commutes and a reduction of noise complaints and serious injuries from car crashes \cite{NYT2026}.
+New York's \emph{congestion pricing} was a long-debated policy of instituting a toll on driving into the very centre of the town: Downtown Manhattan. After years of stalling, the toll went into effect on January 5, 2025 costing \$9 in peak and \$2.25 in off-peak times. The priced area consists of all of Manhattan below 60th street (around the start of Central Park). This specific boundary was chosen to cover the Queensboro bridge terminating at 59th street (this suggests that there should be continuity of covariates in proximity of the boundary which bodes better for RDD than e.g. a NTA region-based boundary). Overall, the policy was seen as successful with car traffic decreasing by 11\%, faster cars and bus commutes and a reduction of noise complaints and serious injuries from car crashes \cite{NYT2026}.
 
-One less explored facet of the toll is the effect on shared bikes. In New York, the most popular provider is CitiBike, a subsidiary of Lyft, with millions of rides per month. The provider publishes data about all rides as Open data \cite{CitiBike2026}, including start and stop station id's and coordinates, start and stop times, type (manual or e-bike) and membership status of user. Numbers of rides started and ended between January 2024 and January 2026 was aggregated by station and day, then connected with NTA region and Borrough data from New York's geodata using the \emph{nytgeo} package. For each station in Manhattan, its distance from the toll line was computed as the length of the tangent line to a line denoting 60th street ($-73.958664, 40.759062 \to -73.993499, 40.773593$) multiplied by which side of the line the point was on ($>0 = toll$). This was computed using the \emph{spatial} extension of DuckDB. 
+One less explored facet of the toll is the effect on shared bikes. In New York, the most popular provider is CitiBike, a subsidiary of Lyft, with millions of rides per month. The provider publishes data about all rides as Open data \cite{CitiBike2026}, including start and stop station id's and coordinates, start and stop times, type (manual or e-bike) and membership status of user. Numbers of rides started and ended between January 2024 and January 2026 was aggregated by station and day, then connected with NTA region and Borough data from New York's geodata using the \emph{nytgeo} package. For each station in Manhattan, its distance from the toll line was computed as the length of the tangent line to a line denoting 60th street ($-73.958664, 40.759062 \to -73.993499, 40.773593$) multiplied by which side of the line the point was on ($>0 = toll$). This was computed using the \emph{spatial} extension of DuckDB. 
 
 \subsection{Difference in Differences}
 
 Before the DiD estimation, it is beneficial to view the raw data and observe possible trends. We do this using two approaches: Figure \ref{fig:trends_raw} presents the raw data fitted using flexible function, Figure \ref{fig:trends_adj} presents seasonally adjusted data. While the former suffers from extreme seasonality, which makes the potential evaluation of parallel trends hard, the latter shows only the variation the data that is left after adjusting for individual stations and both weekly and monthly characteristics (we do this adjustment by first regressing the weekly rides ended on station-month and week fixed effects; second, we obtain the residuals and use them as the adjusted values). 
 
-The raw figure shows not distinction between the group dynamics before and after the effect, we can observe that indeed the stations inside and outside the toll zone are different even before the toll, but we do not see any substantial change after its introduction. The second figure, using the adjusted residuals show some trends. First, it suggest that parallel trend assumption is satisfied, as the fitted lines are nearly parallel. Second, there is noticeable change in level of the fitted line after the toll introduction - while the treated zone increases ant once, the control groups does exactly the opposite, suggesting, there was a switch of where rides ended, consistent with intuitive expectations of the effect. 
+The raw figure shows no distinction between the group dynamics before and after the effect, we can observe that indeed the stations inside and outside the toll zone are different even before the toll, but we do not see any substantial change after its introduction. The second figure, using the adjusted residuals, shows some trends. First, it suggests that the parallel trend assumption is satisfied, as the fitted lines are nearly parallel. Second, there is a noticeable change in level of the fitted line after the toll introduction - while the treated zone increases at once, the control group does exactly the opposite, suggesting that there was a switch of where rides ended, consistent with intuitive expectations of the effect. 
 
 \begin{figure}
     \centering
@@ -82,9 +82,11 @@ The raw figure shows not distinction between the group dynamics before and after
 
 \subsection{Difference in Differences}
 
+We estimate a two-way fixed-effects DiD specification, with the treatment indicator given by the interaction of the toll-zone indicator and a post-toll period indicator (Toll Area $\times$ Post), controlling for station and date (or week, for the weekly aggregation) fixed effects. The outcome variables are rides started (log), rides ended (log), and net inflows (levels), estimated separately at the daily and weekly level as a robustness check across temporal aggregations (Tables \ref{tab:did_static_daily} and \ref{tab:did_static_weekly}). The event studies presented in the Results section are estimated using this same fixed-effect structure.
+
 \subsection{Regression Discontinuity}
 
-The congestion zone boundary is a sharp geographic line that was chosen from reasons that shouldn't suggest the continuity assumption of RDD was violated (to include a popular entryway, the Queensboro bridge, into the toll zone). This allows us to isolate the causal effect: a station 100 metres inside and a station 100 metres outside the toll zone should be similar in terms of neighbourhood character, commuting patters et cetera. The only thing that ought to differ is which side of the line they fall on. If the toll changed behaviour, we should observe a discontinuous jump in outcomes right at the boundary..
+The congestion zone boundary is a sharp geographic line that was chosen for reasons unrelated to the continuity assumption of RDD (to include a popular entryway, the Queensboro bridge, into the toll zone). This allows us to isolate the causal effect: a station 100 metres inside and a station 100 metres outside the toll zone should be similar in terms of neighbourhood character, commuting patterns et cetera. The only thing that ought to differ is which side of the line they fall on. If the toll changed behaviour, we should observe a discontinuous jump in outcomes right at the boundary.
 
 The running variable is $X_i$: the signed distance of each station from the toll boundary line. We define the sign so that $X_i > 0$ is inside the toll zone (lower Manhattan and Midtown south of 60th Street) and $X_i < 0$ outside. The cutoff is simply $c = 0$.
 
@@ -96,7 +98,7 @@ To account for any effects of the holiday seasons (i.e. people returning to down
 
 \noindent computed over a symmetric $\pm 5$-day window centred on the toll introduction date. Under the assumption that January-to-January changes would have been smooth across the boundary absent the policy, any discontinuity in $\Delta Y_i$ at $c = 0$ can be attributed to the toll.
 
-We estimate the RD effect using local linear regression with a triangular kernel, as implemented in the \texttt{rdrobust} package (Calonico, Cattaneo, and Titiunik 2014). The bandwidth is chosen by MSE-optimal selection, which balances bias and variance. Inference is based on robust bias-corrected confidence intervals. We separately estimate the discontinuity for rides ended at each station (inflows) and rides started (outflows). The analysis is restricted to Manhattan, since the toll boundary is drawn within that borough and the distance concept loses meaning across the East or Hudson Rivers.
+We estimate the RD effect using local linear regression with a triangular kernel, as implemented in the \texttt{rdrobust} package \cite{Calonico2014}. The bandwidth is chosen by MSE-optimal selection, which balances bias and variance. Inference is based on robust bias-corrected confidence intervals. We separately estimate the discontinuity for rides ended at each station (inflows) and rides started (outflows). The analysis is restricted to Manhattan, since the toll boundary is drawn within that borough and the distance concept loses meaning across the East or Hudson Rivers.
 
 One practical complication deserves mention. Because station locations follow the Manhattan grid, many stations share identical distance values (all stations of 59th street will have an identical euclidian distance from 60th street). \texttt{rdrobust} flags this as mass points in the running variable. We do not expect this to bias the point estimate, but it does inflate uncertainty relative to a completely continuous running variable.
 
@@ -104,9 +106,9 @@ One practical complication deserves mention. Because station locations follow th
 
 \subsection{Difference in Differences}
 
-We begin by presenting the vent study plots of both rides ended and net rides (...) While the net rides show not effect, there is an effect observed for rides ended. But this can be observed on both sides of the figure, suggesting a seasonality is playing a role rather that causal effect of toll introduction. Note that these event studies are estimated already using the fixed effects as in the final DiD estimation. 
+We begin by presenting the event study plots of both rides ended and net rides (Figures \ref{fig:es_monthly_net}, \ref{fig:es_monthly_ended}, \ref{fig:es_weekly_net}, and \ref{fig:es_weekly_ended}). While the net rides show no effect, there is an effect observed for rides ended. But this can be observed on both sides of the figure, suggesting seasonality is playing a role rather than a causal effect of toll introduction.
 
-These visualizations suggest the underlying data might be problematic for DiD estimation, as there is effect detected even before the treatment is applied, this substantially limits the reliability of our results and analysis. 
+These visualizations suggest the underlying data might be problematic for DiD estimation, as an effect is detected even before the treatment is applied, this substantially limits the reliability of our results and analysis.
 
 \begin{figure}
     \centering
@@ -136,11 +138,12 @@ These visualizations suggest the underlying data might be problematic for DiD es
     \label{fig:es_weekly_ended}
 \end{figure}
 
-The results of preferred models, as show in Figures (...) show a statistically significant effects for some specifications - namely Rides started and ended in logs, for levels, it does not show significant effect. 
+The results of the preferred models, as shown in Tables \ref{tab:did_static_daily} and \ref{tab:did_static_weekly}, show statistically significant effects for some specifications - namely rides started and ended in logs; for levels, it does not show a significant effect.
 
 \input{DiD/outputs/tables/did_static_daily}
-\input{DiD/outputs/tables/did_static_daily_ext}
-\input{DiD/outputs/tables/did_static_weekly_ext}
+%\input{DiD/outputs/tables/did_static_daily_ext}
+%\input{DiD/outputs/tables/did_static_weekly_ext}
+\input{DiD/outputs/tables/did_static_weekly}
 
 \subsection{Regression Discontinuity}
 
@@ -176,7 +179,9 @@ The Difference-in-Differences estimates do not indicate a clear impact, mostly y
 
 The results suggest that the introduction of tolls is likely not the primary factor that influences bike-sharing demand. To the best of our knowledge, our study is the first to use the RDD approach to estimate the impact of congestion tolls on bike-sharing usage. Due to regional differences, we believe that the external validity of the project is limited. On the other hand, the approach can be used in other cities. Lastly, this project might strongly benefit from an interdisciplinary approach—involving geographic scientists—to improve the methodology as well as the interpretation.
 
+\emph{AI disclosure statement: Agentic and chat tools (Claude; Claude code) were used to consult our methodology, assist with some parts of the code (making plots and tables) and conduct discrete writing tasks (writing out equations in \LaTeX, correcting and editing prose). We take full editorial control and responsibility for the text and the attached code.}
 
+\printbibliography
 
 
 

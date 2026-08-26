@@ -1,0 +1,797 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{NYT2026}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=30b861f3a2457efe763bc3431c742ef3}{%
+           family={Badger},
+           familyi={B\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb8db8bf0deab4793635de4e8c3ee46b}{%
+           family={Buchanan},
+           familyi={B\bibinitperiod},
+           given={Larry},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8a620605c1b342d676fb2bc39d463d71}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Stefanos},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb420d88d6cbedd74cb132e199d252e4}{%
+           family={Elkeurti},
+           familyi={E\bibinitperiod},
+           given={Asmaa},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c004f450e0c2c73478d18eea9de4b239}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Winnie},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b104307d20588ac9b5138fee5f571c93}
+      \strng{fullhash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{bibnamehash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{authorbibnamehash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{authornamehash}{b104307d20588ac9b5138fee5f571c93}
+      \strng{authorfullhash}{a09360ba328754a10b5cbdef86ac6594}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New York Times}
+      \field{title}{The Upshot: 27 Million Fewer Car Trips: Life After a Year of Congestion Pricing}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://www.nytimes.com/interactive/2026/01/05/upshot/congestion-pricing-one-year.html
+      \endverb
+      \verb{url}
+      \verb https://www.nytimes.com/interactive/2026/01/05/upshot/congestion-pricing-one-year.html
+      \endverb
+    \endentry
+    \entry{Berezvai2024Investigating}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=875f965c940f85ce15dfcd4d9417b51c}{%
+           family={Berezvai},
+           familyi={B\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8dbefeccaa9e72d08fca051e25b3cbf}{%
+           family={Basile},
+           familyi={B\bibinitperiod},
+           given={Vincenzo},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=584bb2468a861b25ce3f478681cd9aa0}{%
+           family={Kálecz-Simon},
+           familyi={K\bibinithyphendelim S\bibinitperiod},
+           given={András},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0e7261a4b5b55b5e1899e90446ef3157}{%
+           family={Bakó},
+           familyi={B\bibinitperiod},
+           given={Barna},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{019aa16ae2156e3d2a2d2ebed314f8fa}
+      \strng{fullhash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{bibnamehash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{authorbibnamehash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{authornamehash}{019aa16ae2156e3d2a2d2ebed314f8fa}
+      \strng{authorfullhash}{1395abe8709929309ea8b2bc702a8a23}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Reports}
+      \field{title}{Investigating the impact of fuel price shocks on bicycle sharing usage in Budapest}
+      \field{volume}{14}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1038/s41598-024-68677-0
+      \endverb
+    \endentry
+    \entry{Calonico2014}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=bf76a9cacec95807f53a25a560e9b6bb}{%
+           family={Calonico},
+           familyi={C\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fe7c83baa6764134988a29cce14ed162}{%
+           family={Cattaneo},
+           familyi={C\bibinitperiod},
+           given={Matias\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc0af297b5b48d1f0d658f185dfc9954}{%
+           family={Titiunik},
+           familyi={T\bibinitperiod},
+           given={Rocío},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{38ef1a26241dec791142fce8dec2f76b}
+      \strng{fullhash}{8699098b4c47085c48de924a578a5aba}
+      \strng{bibnamehash}{8699098b4c47085c48de924a578a5aba}
+      \strng{authorbibnamehash}{8699098b4c47085c48de924a578a5aba}
+      \strng{authornamehash}{38ef1a26241dec791142fce8dec2f76b}
+      \strng{authorfullhash}{8699098b4c47085c48de924a578a5aba}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{6}
+      \field{title}{Robust Nonparametric Confidence Intervals for Regression-Discontinuity Designs}
+      \field{volume}{82}
+      \field{year}{2014}
+      \field{pages}{2295\bibrangedash 2326}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.3982/ECTA11757
+      \endverb
+    \endentry
+    \entry{CitiBike2026}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c3bfadd052eafdbfb5949da8790004a2}{%
+           family={CitiBike},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{fullhash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{bibnamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authorbibnamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authornamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authorfullhash}{c3bfadd052eafdbfb5949da8790004a2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CitiBike System Data}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://citibikenyc.com/system-data
+      \endverb
+      \verb{url}
+      \verb https://citibikenyc.com/system-data
+      \endverb
+    \endentry
+    \entry{CORNAGO2023102821}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f97b4e15c30479f4043a967490cbd20e}{%
+           family={Cornago},
+           familyi={C\bibinitperiod},
+           given={Elisabetta},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3d74ab4b4c9e1b2eeba19ab9335fbd97}{%
+           family={Dimitropoulos},
+           familyi={D\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d785d4363239135c9b6d272f5a1229cf}{%
+           family={Oueslati},
+           familyi={O\bibinitperiod},
+           given={Walid},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e5c1e1dbb042419260fb9ba0d876236a}
+      \strng{fullhash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{bibnamehash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{authorbibnamehash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{authornamehash}{e5c1e1dbb042419260fb9ba0d876236a}
+      \strng{authorfullhash}{85085d54e3aa94cf33907deaade6702a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We empirically analyse the effect of road pricing on the use of bike sharing. We exploit two sudden policy changes in Milan's congestion pricing scheme resulting in a shift from priced to unpriced road use: a temporary suspension of the scheme in 2012, and a durable reduction in its application schedule. We find that the sudden removal of road pricing decreases bike-sharing use by about 5\%. The policy impact mainly occurs through the increase of road traffic congestion, which makes cycling less safe and pleasant. The reduction in the schedule leads to an 8\% decline in bike-sharing use in the affected time window. Our findings indicate that policies inducing drivers to internalise the external costs of car use also promote the uptake of non-polluting transport modes. This widens the spectrum of benefits that need to be considered in the design and implementation of road pricing policies.}
+      \field{issn}{0095-0696}
+      \field{journaltitle}{Journal of Environmental Economics and Management}
+      \field{title}{The impact of urban road pricing on the use of bike sharing}
+      \field{volume}{120}
+      \field{year}{2023}
+      \field{pages}{102821}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jeem.2023.102821
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0095069623000396
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0095069623000396
+      \endverb
+      \keyw{Urban road pricing,Transport choice,Bike sharing,Zero-carbon mobility}
+    \endentry
+    \entry{He2020A}{article}{}
+      \name{author}{8}{}{%
+        {{un=0,uniquepart=base,hash=08b4502851bcc1f8d0b3b1062fd101c9}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Brian\bibnamedelima Yueshuai},
+           giveni={B\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e015da00ca45bc03691d8f650a8eee9e}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Jinkai},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2fdedc361881584b8a5d393fd1e35e47}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Ziyi},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=81d003013eeb726cd82af1e34d23c1a6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ding},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ce2255adecc44dc2d90105d430146ac5}{%
+           family={Sha},
+           familyi={S\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=27d62aaa219df51eaa434fbedee686b4}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Mina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8b3e36fbf873f75a3b7690ca0889d80f}{%
+           family={Chow},
+           familyi={C\bibinitperiod},
+           given={Joseph\bibnamedelimb Y.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2f0e7373cbf6d999f367a4ccb4d5854b}{%
+           family={Ozbay},
+           familyi={O\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b0cacaca6bbc8365cdbac028fe677ce8}
+      \strng{fullhash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{bibnamehash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{authorbibnamehash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{authornamehash}{b0cacaca6bbc8365cdbac028fe677ce8}
+      \strng{authorfullhash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{A validated multi-agent simulation test bed to evaluate congestion pricing policies on population segments by time-of-day in New York City}
+      \field{volume}{abs/2008.04762}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1016/j.tranpol.2020.12.011
+      \endverb
+    \endentry
+    \entry{manheim1979fundamentals}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=217aefa34c94ec4d8bc5b0d4ed4879b9}{%
+           family={Manheim},
+           familyi={M\bibinitperiod},
+           given={Marvin\bibnamedelima L},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{fullhash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{bibnamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authorbibnamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authornamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authorfullhash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fundamentals of Transportation systems analysis; Volume 1: Basic concepts}
+      \field{year}{1979}
+    \endentry
+    \entry{mcnally2007four}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3126b5ef342482e8f2731417d05b76b4}{%
+           family={McNally},
+           familyi={M\bibinitperiod},
+           given={Michael\bibnamedelima G},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{fullhash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{bibnamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authorbibnamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authornamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authorfullhash}{3126b5ef342482e8f2731417d05b76b4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The four-step model}
+      \field{year}{2007}
+    \endentry
+    \entry{vickrey1969congestion}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c5ef208b114c274afd5ed40e741f37f0}{%
+           family={Vickrey},
+           familyi={V\bibinitperiod},
+           given={William\bibnamedelima S},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{fullhash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{bibnamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authorbibnamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authornamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authorfullhash}{c5ef208b114c274afd5ed40e741f37f0}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The American economic review}
+      \field{number}{2}
+      \field{title}{Congestion theory and transport investment}
+      \field{volume}{59}
+      \field{year}{1969}
+      \field{pages}{251\bibrangedash 260}
+      \range{pages}{10}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{NYT2026}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=30b861f3a2457efe763bc3431c742ef3}{%
+           family={Badger},
+           familyi={B\bibinitperiod},
+           given={Emily},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bb8db8bf0deab4793635de4e8c3ee46b}{%
+           family={Buchanan},
+           familyi={B\bibinitperiod},
+           given={Larry},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8a620605c1b342d676fb2bc39d463d71}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Stefanos},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb420d88d6cbedd74cb132e199d252e4}{%
+           family={Elkeurti},
+           familyi={E\bibinitperiod},
+           given={Asmaa},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c004f450e0c2c73478d18eea9de4b239}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Winnie},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b104307d20588ac9b5138fee5f571c93}
+      \strng{fullhash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{bibnamehash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{authorbibnamehash}{a09360ba328754a10b5cbdef86ac6594}
+      \strng{authornamehash}{b104307d20588ac9b5138fee5f571c93}
+      \strng{authorfullhash}{a09360ba328754a10b5cbdef86ac6594}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New York Times}
+      \field{title}{The Upshot: 27 Million Fewer Car Trips: Life After a Year of Congestion Pricing}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://www.nytimes.com/interactive/2026/01/05/upshot/congestion-pricing-one-year.html
+      \endverb
+      \verb{url}
+      \verb https://www.nytimes.com/interactive/2026/01/05/upshot/congestion-pricing-one-year.html
+      \endverb
+    \endentry
+    \entry{Berezvai2024Investigating}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=875f965c940f85ce15dfcd4d9417b51c}{%
+           family={Berezvai},
+           familyi={B\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d8dbefeccaa9e72d08fca051e25b3cbf}{%
+           family={Basile},
+           familyi={B\bibinitperiod},
+           given={Vincenzo},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=584bb2468a861b25ce3f478681cd9aa0}{%
+           family={Kálecz-Simon},
+           familyi={K\bibinithyphendelim S\bibinitperiod},
+           given={András},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0e7261a4b5b55b5e1899e90446ef3157}{%
+           family={Bakó},
+           familyi={B\bibinitperiod},
+           given={Barna},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{019aa16ae2156e3d2a2d2ebed314f8fa}
+      \strng{fullhash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{bibnamehash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{authorbibnamehash}{1395abe8709929309ea8b2bc702a8a23}
+      \strng{authornamehash}{019aa16ae2156e3d2a2d2ebed314f8fa}
+      \strng{authorfullhash}{1395abe8709929309ea8b2bc702a8a23}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Reports}
+      \field{title}{Investigating the impact of fuel price shocks on bicycle sharing usage in Budapest}
+      \field{volume}{14}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1038/s41598-024-68677-0
+      \endverb
+    \endentry
+    \entry{Calonico2014}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=bf76a9cacec95807f53a25a560e9b6bb}{%
+           family={Calonico},
+           familyi={C\bibinitperiod},
+           given={Sebastian},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fe7c83baa6764134988a29cce14ed162}{%
+           family={Cattaneo},
+           familyi={C\bibinitperiod},
+           given={Matias\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc0af297b5b48d1f0d658f185dfc9954}{%
+           family={Titiunik},
+           familyi={T\bibinitperiod},
+           given={Rocío},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{38ef1a26241dec791142fce8dec2f76b}
+      \strng{fullhash}{8699098b4c47085c48de924a578a5aba}
+      \strng{bibnamehash}{8699098b4c47085c48de924a578a5aba}
+      \strng{authorbibnamehash}{8699098b4c47085c48de924a578a5aba}
+      \strng{authornamehash}{38ef1a26241dec791142fce8dec2f76b}
+      \strng{authorfullhash}{8699098b4c47085c48de924a578a5aba}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{number}{6}
+      \field{title}{Robust Nonparametric Confidence Intervals for Regression-Discontinuity Designs}
+      \field{volume}{82}
+      \field{year}{2014}
+      \field{pages}{2295\bibrangedash 2326}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.3982/ECTA11757
+      \endverb
+    \endentry
+    \entry{CitiBike2026}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c3bfadd052eafdbfb5949da8790004a2}{%
+           family={CitiBike},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{fullhash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{bibnamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authorbibnamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authornamehash}{c3bfadd052eafdbfb5949da8790004a2}
+      \strng{authorfullhash}{c3bfadd052eafdbfb5949da8790004a2}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CitiBike System Data}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://citibikenyc.com/system-data
+      \endverb
+      \verb{url}
+      \verb https://citibikenyc.com/system-data
+      \endverb
+    \endentry
+    \entry{CORNAGO2023102821}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f97b4e15c30479f4043a967490cbd20e}{%
+           family={Cornago},
+           familyi={C\bibinitperiod},
+           given={Elisabetta},
+           giveni={E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3d74ab4b4c9e1b2eeba19ab9335fbd97}{%
+           family={Dimitropoulos},
+           familyi={D\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d785d4363239135c9b6d272f5a1229cf}{%
+           family={Oueslati},
+           familyi={O\bibinitperiod},
+           given={Walid},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e5c1e1dbb042419260fb9ba0d876236a}
+      \strng{fullhash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{bibnamehash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{authorbibnamehash}{85085d54e3aa94cf33907deaade6702a}
+      \strng{authornamehash}{e5c1e1dbb042419260fb9ba0d876236a}
+      \strng{authorfullhash}{85085d54e3aa94cf33907deaade6702a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We empirically analyse the effect of road pricing on the use of bike sharing. We exploit two sudden policy changes in Milan's congestion pricing scheme resulting in a shift from priced to unpriced road use: a temporary suspension of the scheme in 2012, and a durable reduction in its application schedule. We find that the sudden removal of road pricing decreases bike-sharing use by about 5\%. The policy impact mainly occurs through the increase of road traffic congestion, which makes cycling less safe and pleasant. The reduction in the schedule leads to an 8\% decline in bike-sharing use in the affected time window. Our findings indicate that policies inducing drivers to internalise the external costs of car use also promote the uptake of non-polluting transport modes. This widens the spectrum of benefits that need to be considered in the design and implementation of road pricing policies.}
+      \field{issn}{0095-0696}
+      \field{journaltitle}{Journal of Environmental Economics and Management}
+      \field{title}{The impact of urban road pricing on the use of bike sharing}
+      \field{volume}{120}
+      \field{year}{2023}
+      \field{pages}{102821}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jeem.2023.102821
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0095069623000396
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0095069623000396
+      \endverb
+      \keyw{Urban road pricing,Transport choice,Bike sharing,Zero-carbon mobility}
+    \endentry
+    \entry{He2020A}{article}{}
+      \name{author}{8}{}{%
+        {{un=0,uniquepart=base,hash=08b4502851bcc1f8d0b3b1062fd101c9}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Brian\bibnamedelima Yueshuai},
+           giveni={B\bibinitperiod\bibinitdelim Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e015da00ca45bc03691d8f650a8eee9e}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Jinkai},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2fdedc361881584b8a5d393fd1e35e47}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Ziyi},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=81d003013eeb726cd82af1e34d23c1a6}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ding},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ce2255adecc44dc2d90105d430146ac5}{%
+           family={Sha},
+           familyi={S\bibinitperiod},
+           given={Di},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=27d62aaa219df51eaa434fbedee686b4}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Mina},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8b3e36fbf873f75a3b7690ca0889d80f}{%
+           family={Chow},
+           familyi={C\bibinitperiod},
+           given={Joseph\bibnamedelimb Y.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim Y\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2f0e7373cbf6d999f367a4ccb4d5854b}{%
+           family={Ozbay},
+           familyi={O\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b0cacaca6bbc8365cdbac028fe677ce8}
+      \strng{fullhash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{bibnamehash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{authorbibnamehash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \strng{authornamehash}{b0cacaca6bbc8365cdbac028fe677ce8}
+      \strng{authorfullhash}{ee4ca096838ccd4bc0c02551e7f62f78}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv}
+      \field{title}{A validated multi-agent simulation test bed to evaluate congestion pricing policies on population segments by time-of-day in New York City}
+      \field{volume}{abs/2008.04762}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1016/j.tranpol.2020.12.011
+      \endverb
+    \endentry
+    \entry{manheim1979fundamentals}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=217aefa34c94ec4d8bc5b0d4ed4879b9}{%
+           family={Manheim},
+           familyi={M\bibinitperiod},
+           given={Marvin\bibnamedelima L},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{fullhash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{bibnamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authorbibnamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authornamehash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \strng{authorfullhash}{217aefa34c94ec4d8bc5b0d4ed4879b9}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fundamentals of Transportation systems analysis; Volume 1: Basic concepts}
+      \field{year}{1979}
+    \endentry
+    \entry{mcnally2007four}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3126b5ef342482e8f2731417d05b76b4}{%
+           family={McNally},
+           familyi={M\bibinitperiod},
+           given={Michael\bibnamedelima G},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{fullhash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{bibnamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authorbibnamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authornamehash}{3126b5ef342482e8f2731417d05b76b4}
+      \strng{authorfullhash}{3126b5ef342482e8f2731417d05b76b4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The four-step model}
+      \field{year}{2007}
+    \endentry
+    \entry{vickrey1969congestion}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c5ef208b114c274afd5ed40e741f37f0}{%
+           family={Vickrey},
+           familyi={V\bibinitperiod},
+           given={William\bibnamedelima S},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{fullhash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{bibnamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authorbibnamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authornamehash}{c5ef208b114c274afd5ed40e741f37f0}
+      \strng{authorfullhash}{c5ef208b114c274afd5ed40e741f37f0}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The American economic review}
+      \field{number}{2}
+      \field{title}{Congestion theory and transport investment}
+      \field{volume}{59}
+      \field{year}{1969}
+      \field{pages}{251\bibrangedash 260}
+      \range{pages}{10}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

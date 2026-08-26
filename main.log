@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  27 JUN 2026 13:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.4)  26 AUG 2026 21:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -516,14 +516,7 @@ Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
 ))
 \@quotelevel=\count430
 \@quotereset=\count431
- (./main.aux
-
-LaTeX Warning: Label `tab:did_static_daily' multiply defined.
-
-
-LaTeX Warning: Label `tab:did_static_daily' multiply defined.
-
-)
+ (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -631,116 +624,80 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `main.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' not found.
-
-No file main.bbl.
+Package biblatex Info: ... file 'main.bbl' found.
+ (./main.bbl)
 Package biblatex Info: Reference section=0 on input line 32.
 Package biblatex Info: Reference segment=0 on input line 32.
+ [1
 
-LaTeX Warning: Citation 'NYT2026' on page 1 undefined on input line 48.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation 'CitiBike2026' on page 2 undefined on input line 50.
-
-[2]
-<DiD/outputs/figures/parallel_trends_raw.png, id=70, 650.43pt x 397.485pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+<DiD/outputs/figures/parallel_trends_raw.png, id=91, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/parallel_trends_raw.png Graphic file (type png)
 <use DiD/outputs/figures/parallel_trends_raw.png>
-Package pdftex.def Info: DiD/outputs/figures/parallel_trends_raw.png  used on input line 60.
-(pdftex.def)             Requested size: 390.25534pt x 238.49283pt.
-<DiD/outputs/figures/parallel_trends_adjusted.png, id=71, 650.43pt x 397.485pt>
+Package pdftex.def Info: DiD/outputs/figures/parallel_trends_raw.png  used on input line 69.
+(pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
+<DiD/outputs/figures/parallel_trends_adjusted.png, id=92, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/parallel_trends_adjusted.png Graphic file (type png)
 <use DiD/outputs/figures/parallel_trends_adjusted.png>
-Package pdftex.def Info: DiD/outputs/figures/parallel_trends_adjusted.png  used on input line 67.
-(pdftex.def)             Requested size: 390.25534pt x 238.49283pt.
- [3 <./DiD/outputs/figures/parallel_trends_raw.png>] [4 <./DiD/outputs/figures/parallel_trends_adjusted.png>]
-<DiD/outputs/figures/event_study_monthly.png, id=86, 578.16pt x 361.35pt>
+Package pdftex.def Info: DiD/outputs/figures/parallel_trends_adjusted.png  used on input line 76.
+(pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
+ [4 <./DiD/outputs/figures/parallel_trends_raw.png>] [5 <./DiD/outputs/figures/parallel_trends_adjusted.png>]
+<DiD/outputs/figures/event_study_monthly.png, id=115, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/event_study_monthly.png Graphic file (type png)
 <use DiD/outputs/figures/event_study_monthly.png>
-Package pdftex.def Info: DiD/outputs/figures/event_study_monthly.png  used on input line 104.
+Package pdftex.def Info: DiD/outputs/figures/event_study_monthly.png  used on input line 115.
 (pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
-<DiD/outputs/figures/event_study_monthly_ended.png, id=87, 578.16pt x 361.35pt>
+<DiD/outputs/figures/event_study_monthly_ended.png, id=116, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/event_study_monthly_ended.png Graphic file (type png)
 <use DiD/outputs/figures/event_study_monthly_ended.png>
-Package pdftex.def Info: DiD/outputs/figures/event_study_monthly_ended.png  used on input line 111.
+Package pdftex.def Info: DiD/outputs/figures/event_study_monthly_ended.png  used on input line 122.
 (pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
-<DiD/outputs/figures/event_study_weekly.png, id=88, 578.16pt x 361.35pt>
+<DiD/outputs/figures/event_study_weekly.png, id=117, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/event_study_weekly.png Graphic file (type png)
 <use DiD/outputs/figures/event_study_weekly.png>
-Package pdftex.def Info: DiD/outputs/figures/event_study_weekly.png  used on input line 118.
+Package pdftex.def Info: DiD/outputs/figures/event_study_weekly.png  used on input line 129.
 (pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
-<DiD/outputs/figures/event_study_weekly_ended.png, id=89, 578.16pt x 361.35pt>
+<DiD/outputs/figures/event_study_weekly_ended.png, id=118, 578.16pt x 361.35pt>
 File: DiD/outputs/figures/event_study_weekly_ended.png Graphic file (type png)
 <use DiD/outputs/figures/event_study_weekly_ended.png>
-Package pdftex.def Info: DiD/outputs/figures/event_study_weekly_ended.png  used on input line 125.
+Package pdftex.def Info: DiD/outputs/figures/event_study_weekly_ended.png  used on input line 136.
 (pdftex.def)             Requested size: 390.25534pt x 243.90623pt.
- (./DiD/outputs/tables/did_static_daily.tex [5 <./DiD/outputs/figures/event_study_monthly.png>] [6 <./DiD/outputs/figures/event_study_monthly_ended.png> <./DiD/outputs/figures/event_study_weekly.png>]) (./DiD/outputs/tables/did_static_daily_ext.tex
-Overfull \hbox (176.13098pt too wide) in paragraph at lines 5--26
- [][] 
- []
-
-) (./DiD/outputs/tables/did_static_weekly_ext.tex
-Overfull \hbox (176.13098pt too wide) in paragraph at lines 5--26
- [][] 
- []
-
-)
-<code/outputs/figures/rdd_rides_ended.png, id=108, 542.025pt x 325.215pt>
+ (./DiD/outputs/tables/did_static_daily.tex) (./DiD/outputs/tables/did_static_weekly.tex)
+<code/outputs/figures/rdd_rides_ended.png, id=125, 542.025pt x 325.215pt>
 File: code/outputs/figures/rdd_rides_ended.png Graphic file (type png)
 <use code/outputs/figures/rdd_rides_ended.png>
-Package pdftex.def Info: code/outputs/figures/rdd_rides_ended.png  used on input line 142.
+Package pdftex.def Info: code/outputs/figures/rdd_rides_ended.png  used on input line 154.
 (pdftex.def)             Requested size: 390.25534pt x 234.15958pt.
- [7 <./DiD/outputs/figures/event_study_weekly_ended.png>] [8]
-<code/outputs/figures/rdd_rides_started.png, id=125, 542.025pt x 325.215pt>
+ [6] [7 <./DiD/outputs/figures/event_study_monthly.png> <./DiD/outputs/figures/event_study_monthly_ended.png>] [8 <./DiD/outputs/figures/event_study_weekly.png> <./DiD/outputs/figures/event_study_weekly_ended.png>] [9]
+<code/outputs/figures/rdd_rides_started.png, id=156, 542.025pt x 325.215pt>
 File: code/outputs/figures/rdd_rides_started.png Graphic file (type png)
 <use code/outputs/figures/rdd_rides_started.png>
-Package pdftex.def Info: code/outputs/figures/rdd_rides_started.png  used on input line 149.
+Package pdftex.def Info: code/outputs/figures/rdd_rides_started.png  used on input line 161.
 (pdftex.def)             Requested size: 390.25534pt x 234.15958pt.
- [9 <./code/outputs/figures/rdd_rides_ended.png>] (./code/outputs/tables/rdd_main.tex) [10 <./code/outputs/figures/rdd_rides_started.png>] [11] (./main.aux)
+ (./code/outputs/tables/rdd_main.tex [10 <./code/outputs/figures/rdd_rides_ended.png> <./code/outputs/figures/rdd_rides_started.png>]) [11] [12] [13] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 892DE47B5341079835D4BC82E82A831A;1454
-(rerunfilecheck)             After:  591D2D0DC17AABB8E33A184D2B8FE4BB;1535.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: CDAC2209D425E8CDEDF821A0700E4D4E;1535.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17772 strings out of 476182
- 313304 string characters out of 5795596
- 1941975 words of memory out of 5000000
- 39551 multiletter control sequences out of 15000+600000
- 564301 words of font info for 58 fonts, out of 8000000 for 9000
+ 17875 strings out of 476182
+ 316158 string characters out of 5795596
+ 1939975 words of memory out of 5000000
+ 39644 multiletter control sequences out of 15000+600000
+ 564342 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,81p,985b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/fialamatous/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (11 pages, 684627 bytes).
+ 75i,10n,81p,1360b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/fialamatous/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (13 pages, 778894 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 259 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
